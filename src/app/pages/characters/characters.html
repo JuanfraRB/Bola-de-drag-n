@@ -1,1 +1,26 @@
-<p>characters works!</p>
+@if(loading()){
+    <p class="loading">Cargando personajes...</p>
+}@else{
+    <h1>Personajes de Dragon Ball</h1>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar personaje..." [(ngModel)]="searchTermValue" (ngModelChange)="onSearch($event)"/>
+    </div>
+
+    <div class="grid">
+    @for (character of characters(); track character.id) {
+        <div class="card">
+            <img [src]="character.image" [alt]="character.name" width="120" height="120" style="object-fit: contain;" />
+            <h3>{{character.name}}</h3>
+            <p>Ki: {{character.ki}}</p>
+            <p>Raza: {{character.race}}</p>
+        </div>
+    }
+    </div>
+
+    <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage() === 1">Anterior</button>
+        <span>Página {{currentPage()}} de {{totalPages()}}</span>
+        <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Siguiente</button>
+    </div>
+}

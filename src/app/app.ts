@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,6 +8,12 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('dragon-ball-app');
+export class App implements OnInit{
+  showSplash = signal(true);
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.showSplash.set(false);
+    }, 3000);
+  }
 }

@@ -4,6 +4,13 @@ import { Observable } from "rxjs";
 import type { Character, ApiResponse } from "../models/character.model";
 
 
+export interface CharacterFilters {
+  name?: string;
+  gender?: string;
+  race?: string;
+  affiliation?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,8 +30,21 @@ export class DragonballService {
       return this.http.get<Character>(`${this.baseUrl}/characters/${id}`);
     }
 
-    searchCharacters(name: string): Observable<ApiResponse<Character>> {
+    /*searchCharacters(name: string): Observable<any> {
       const params = new HttpParams().set('name', name);
-      return this.http.get<ApiResponse<Character>>(`${this.baseUrl}/characters`, { params });
-    }
+      return this.http.get<any>(`${this.baseUrl}/characters`, { params });
+    }*/
+
+      filterCharacters(filters: CharacterFilters): Observable<any> {
+        let params = new HttpParams();
+        if (filters.name) params = params.set('name', filters.name);
+  
+        if (filters.gender) params = params.set('gender', filters.gender);
+        
+        if (filters.race) params = params.set('race', filters.race);
+        
+        if (filters.affiliation) params = params.set('affiliation', filters.affiliation);
+        
+        return this.http.get<any>(`${this.baseUrl}/characters`, { params });
+      }
 }

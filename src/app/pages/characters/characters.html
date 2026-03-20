@@ -1,26 +1,75 @@
-@if(loading()){
-    <p class="loading">Cargando personajes...</p>
-}@else{
-    <h1>Personajes de Dragon Ball</h1>
+<h1>Personajes de Dragon Ball</h1>
 
-    <div class="search-bar">
-        <input type="text" placeholder="Buscar personaje..." [(ngModel)]="searchTermValue" (ngModelChange)="onSearch($event)"/>
-    </div>
+<div class="filters">
+  <input type="text" placeholder="Buscar por nombre..."
+    [(ngModel)]="filters.name"
+    (ngModelChange)="onFilterChange()"/>
 
-    <div class="grid">
-    @for (character of characters(); track character.id) {
-        <div class="card">
-            <img [src]="character.image" [alt]="character.name" width="120" height="120" style="object-fit: contain;" />
-            <h3>{{character.name}}</h3>
-            <p>Ki: {{character.ki}}</p>
-            <p>Raza: {{character.race}}</p>
-        </div>
+  <select [(ngModel)]="filters.gender" (ngModelChange)="onFilterChange()">
+    <option value="">Género</option>
+    @for (g of genders; track g) {
+      <option [value]="g">{{ g }}</option>
     }
-    </div>
+  </select>
 
+  <select [(ngModel)]="filters.race" (ngModelChange)="onFilterChange()">
+    <option value="">Raza</option>
+    @for (r of races; track r) {
+      <option [value]="r">{{ r }}</option>
+    }
+  </select>
+
+  <select [(ngModel)]="filters.affiliation" (ngModelChange)="onFilterChange()">
+    <option value="">Afiliación</option>
+    @for (a of affiliations; track a) {
+      <option [value]="a">{{ a }}</option>
+    }
+  </select>
+
+  @if (hasFilters()) {
+    <button class="clear-btn" (click)="clearFilters()">Limpiar filtros</button>
+  }
+</div>
+
+@if (loading()) {
+  <p class="loading">Cargando personajes...</p>
+} @else {
+  <div class="grid">
+    @for (character of characters(); track character.id) {
+      <div class="card" (click)="openModal(character)">
+        <img [src]="character.image" [alt]="character.name" width="120" height="120" style="object-fit: contain;" />
+        <h3>{{ character.name }}</h3>
+        <p>Ki: {{ character.ki }}</p>
+        <p>Raza: {{ character.race }}</p>
+      </div>
+    } @empty {
+      <p class="no-results">No se encontraron personajes con los filtros seleccionados 🐉</p>
+    }
+  </div>
+
+  @if (!hasFilters()) {
     <div class="pagination">
-        <button (click)="prevPage()" [disabled]="currentPage() === 1">Anterior</button>
-        <span>Página {{currentPage()}} de {{totalPages()}}</span>
-        <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Siguiente</button>
+      <button (click)="prevPage()" [disabled]="currentPage() === 1">Anterior</button>
+      <span>Página {{ currentPage() }} de {{ totalPages() }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Siguiente</button>
     </div>
+  }
+}
+
+@if (selectedCharacter()) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeModal()">✕</button>
+      <img [src]="selectedCharacter()?.image" [alt]="selectedCharacter()?.name" />
+      <div class="modal-info">
+        <h2>{{ selectedCharacter()?.name }}</h2>
+        <p><span>Raza:</span> {{ selectedCharacter()?.race }}</p>
+        <p><span>Género:</span> {{ selectedCharacter()?.gender }}</p>
+        <p><span>Ki:</span> {{ selectedCharacter()?.ki }}</p>
+        <p><span>Ki Máximo:</span> {{ selectedCharacter()?.maxKi }}</p>
+        <p><span>Afiliación:</span> {{ selectedCharacter()?.affiliation }}</p>
+        <p class="description">{{ selectedCharacter()?.description }}</p>
+      </div>
+    </div>
+  </div>
 }

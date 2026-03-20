@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+@if (showSplash()) {
+  <div class="splash">
+    <div class="balls">
+      <div class="ball b1"><span>★</span></div>
+      <div class="ball b2"><span>★★</span></div>
+      <div class="ball b3"><span>★★★</span></div>
+      <div class="ball b4"><span>★★★★</span></div>
+      <div class="ball b5"><span>★★★★★</span></div>
+      <div class="ball b6"><span>★★★★★★</span></div>
+      <div class="ball b7"><span>★★★★★★★</span></div>
+    </div>
+    <h1 class="splash-title">Dragon Ball</h1>
+  </div>
+} @else {
+  <router-outlet></router-outlet>
+}

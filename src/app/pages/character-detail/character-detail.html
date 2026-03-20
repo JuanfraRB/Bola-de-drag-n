@@ -1,0 +1,21 @@
+@if (loading()) {
+  <p class="loading">Cargando personaje...</p>
+} @else if (character()) {
+  <div class="detail-container">
+    <button class="back-btn" (click)="goBack()">← Volver</button>
+
+    <div class="detail-card">
+      <img [src]="character()!.image" [alt]="character()!.name" />
+
+      <div class="detail-info">
+        <h1>{{ character()!.name }}</h1>
+        <p><span>Raza:</span> {{ character()!.race }}</p>
+        <p><span>Género:</span> {{ character()!.gender }}</p>
+        <p><span>Ki:</span> {{ character()!.ki }}</p>
+        <p><span>Ki Máximo:</span> {{ character()!.maxKi }}</p>
+        <p><span>Afiliación:</span> {{ character()!.affiliation }}</p>
+        <p class="description">{{ character()!.description }}</p>
+      </div>
+    </div>
+  </div>
+}

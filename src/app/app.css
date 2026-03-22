@@ -17,22 +17,32 @@
 }
 
 .balls {
-  display: flex;
-  gap: 16px;
-  align-items: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  animation: rotar 3s linear infinite;
 }
 
 .ball {
-  width: 60px;
-  height: 60px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #ffdd57, #f5820a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: 0 0 15px rgba(245, 130, 10, 0.6);
-  animation: bounce 1s ease-in-out infinite;
-  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+.star {
+  position: absolute;
+  font-size: 7px;
+  color: #c0392b;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
 }
 
 .ball span {
@@ -43,20 +53,69 @@
   text-align: center;
 }
 
-.b1 { animation-delay: 0s; }
-.b2 { animation-delay: 0.1s; }
-.b3 { animation-delay: 0.2s; }
-.b4 { animation-delay: 0.3s; }
-.b5 { animation-delay: 0.4s; }
-.b6 { animation-delay: 0.5s; }
-.b7 { animation-delay: 0.6s; }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+/* 1 estrella — centro */
+.b1 .s1 { transform: translate(-50%, -50%); }
+
+/* 2 estrellas */
+.b2 .s1 { transform: translate(-50%, -50%) translateX(-6px); }
+.b2 .s2 { transform: translate(-50%, -50%) translateX(6px); }
+
+/* 3 estrellas — triángulo */
+.b3 .s1 { transform: translate(-50%, -50%) translate(0px, -7px); }
+.b3 .s2 { transform: translate(-50%, -50%) translate(-6px, 4px); }
+.b3 .s3 { transform: translate(-50%, -50%) translate(6px, 4px); }
+
+/* 4 estrellas — cuadrado */
+.b4 .s1 { transform: translate(-50%, -50%) translate(-6px, -6px); }
+.b4 .s2 { transform: translate(-50%, -50%) translate(6px, -6px); }
+.b4 .s3 { transform: translate(-50%, -50%) translate(-6px, 6px); }
+.b4 .s4 { transform: translate(-50%, -50%) translate(6px, 6px); }
+
+/* 5 estrellas — pentágono */
+.b5 .s1 { transform: translate(-50%, -50%) translate(0px, -8px); }
+.b5 .s2 { transform: translate(-50%, -50%) translate(7px, -3px); }
+.b5 .s3 { transform: translate(-50%, -50%) translate(5px, 6px); }
+.b5 .s4 { transform: translate(-50%, -50%) translate(-5px, 6px); }
+.b5 .s5 { transform: translate(-50%, -50%) translate(-7px, -3px); }
+
+/* 6 estrellas — hexágono */
+.b6 .s1 { transform: translate(-50%, -50%) translate(0px, -8px); }
+.b6 .s2 { transform: translate(-50%, -50%) translate(7px, -4px); }
+.b6 .s3 { transform: translate(-50%, -50%) translate(7px, 4px); }
+.b6 .s4 { transform: translate(-50%, -50%) translate(0px, 8px); }
+.b6 .s5 { transform: translate(-50%, -50%) translate(-7px, 4px); }
+.b6 .s6 { transform: translate(-50%, -50%) translate(-7px, -4px); }
+
+/* 7 estrellas — hexágono + centro */
+.b7 .s1 { transform: translate(-50%, -50%) translate(0px, -8px); }
+.b7 .s2 { transform: translate(-50%, -50%) translate(7px, -4px); }
+.b7 .s3 { transform: translate(-50%, -50%) translate(7px, 4px); }
+.b7 .s4 { transform: translate(-50%, -50%) translate(0px, 8px); }
+.b7 .s5 { transform: translate(-50%, -50%) translate(-7px, 4px); }
+.b7 .s6 { transform: translate(-50%, -50%) translate(-7px, -4px); }
+.b7 .s7 { transform: translate(-50%, -50%) translate(0px, 0px); }
+
+/* Posición de cada bola en el círculo */
+.b1 { transform: rotate(0deg)   translateX(90px); }
+.b2 { transform: rotate(51deg)  translateX(90px); }
+.b3 { transform: rotate(102deg) translateX(90px); }
+.b4 { transform: rotate(153deg) translateX(90px); }
+.b5 { transform: rotate(204deg) translateX(90px); }
+.b6 { transform: rotate(255deg) translateX(90px); }
+.b7 { transform: rotate(306deg) translateX(90px); }
+
+@keyframes rotar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50%       { opacity: 0.5; }
+}
+
+.content {
+  padding-top: 20px;
+  padding-left: 70px;
 }

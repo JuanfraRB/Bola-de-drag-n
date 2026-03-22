@@ -1,0 +1,29 @@
+<button class="hamburguer" (click)="toggle()">
+  @if (isOpen()) {
+    ✕
+  } @else {
+    ☰
+  }
+</button>
+
+@if (isOpen()) {
+  <div class="overlay" (click)="close()"></div>
+}
+
+<nav class="sidebar" [class.open]="isOpen()" (mouseleave)="close()">
+  <div class="sidebar-header">
+    <img src="./assets/dragonball.svg" alt="Dragon Ball" class="logo" />
+    <h2>Dragon Ball</h2>
+  </div>
+  <ul>
+    <li>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="close()">
+        🐉 Personajes
+      </a>
+    </li>
+    <li>
+      <a routerLink="/planets" routerLinkActive="active" (click)="close()">
+        🪐 Planetas
+      </a>
+    </li>
+  </ul>

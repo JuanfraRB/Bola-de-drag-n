@@ -137,8 +137,14 @@ export class Characters implements OnInit, OnDestroy {
   }
 
     openModal(character: Character) {
-    this.selectedCharacter.set(character);
-  }
+      this.selectedCharacter.set(character);
+      this.dragonballService.getCharacterById(character.id).subscribe({
+      next: (res) => {
+        this.selectedCharacter.set(res);
+      },
+      error: (err) => console.error(err)
+    });
+    }
 
   closeModal() {
     this.selectedCharacter.set(null);

@@ -1,0 +1,63 @@
+<h1>Planetas de Dragon Ball</h1>
+
+<div class="filters">
+  <input type="text" placeholder="Buscar por nombre..."
+    [(ngModel)]="filters.name"
+    (ngModelChange)="onFilterChange()" />
+
+  <select [(ngModel)]="filters.isDestroyed" (ngModelChange)="onFilterChange()">
+    <option value="">Estado</option>
+    <option value="true">💥 Destruido</option>
+    <option value="false">✅ Existente</option>
+  </select>
+
+  @if (hasFilters()) {
+    <button class="clear-btn" (click)="clearFilters()">Limpiar filtros</button>
+  }
+</div>
+
+@if (loading()) {
+  <p class="loading">Cargando planetas...</p>
+} @else {
+  <div class="grid">
+    @for (planet of planets(); track planet.id) {
+      <div class="card" (click)="openModal(planet)">
+        <img [src]="planet.image" [alt]="planet.name" width="120" height="120" style="object-fit: contain;" />
+        <h3>{{ planet.name }}</h3>
+        @if (planet.isDestroyed) {
+          <span class="destroyed">💥 Destruido</span>
+        } @else {
+          <span class="alive">✅ Existente</span>
+        }
+      </div>
+    } @empty {
+      <p class="no-results">No se encontraron planetas con los filtros seleccionados 🪐</p>
+    }
+  </div>
+
+  @if (!hasFilters()) {
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage() === 1">Anterior</button>
+      <span>Página {{ currentPage() }} de {{ totalPages() }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Siguiente</button>
+    </div>
+  }
+}
+
+@if (selectedPlanet()) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeModal()">✕</button>
+      <img [src]="selectedPlanet()?.image" [alt]="selectedPlanet()?.name" />
+      <div class="modal-info">
+        <h2>{{ selectedPlanet()?.name }}</h2>
+        @if (selectedPlanet()?.isDestroyed) {
+          <span class="destroyed">💥 Destruido</span>
+        } @else {
+          <span class="alive">✅ Existente</span>
+        }
+        <p class="description">{{ selectedPlanet()?.description }}</p>
+      </div>
+    </div>
+  </div>
+}

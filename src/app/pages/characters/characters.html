@@ -69,6 +69,35 @@
         <p><span>Ki Máximo:</span> {{ selectedCharacter()?.maxKi }}</p>
         <p><span>Afiliación:</span> {{ selectedCharacter()?.affiliation }}</p>
         <p class="description">{{ selectedCharacter()?.description }}</p>
+
+        @if (selectedCharacter()?.transformations?.length) {
+          <div class="transformations">
+            <h3>Transformaciones</h3>
+          <div class="trans-grid">
+          @for (t of selectedCharacter()!.transformations!; track t.id) {
+            <div class="trans-card">
+              <img [src]="t.image" [alt]="t.name" />
+              <p>{{ t.name }}</p>
+              <p class="trans-ki">Ki: {{ t.ki }}</p>
+            </div>
+          }
+          </div>
+        </div>
+        }
+        @if (selectedCharacter()?.originPlanet) {
+          <p><span>Planeta de origen:</span> {{ selectedCharacter()?.originPlanet?.name }}
+          @if (selectedCharacter()?.originPlanet?.isDestroyed) {
+            <span class="destroyed">💥 Destruido</span>
+          } @else {
+          <span class="alive">✅ Existente</span>
+          }
+        </p>
+        <img
+          [src]="selectedCharacter()?.originPlanet?.image"
+          [alt]="selectedCharacter()?.originPlanet?.name"
+          class="planet-img"
+        />
+      }
       </div>
     </div>
   </div>

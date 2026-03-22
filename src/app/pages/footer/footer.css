@@ -1,0 +1,180 @@
+.main-footer {
+  background: var(--sidebar-bg);
+  color: var(--text-primary);
+  padding: 10px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+/* ===== BRAND ===== */
+.footer-section.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.brand-name span {
+  color: var(--accent); /* ← RB en color acento */
+}
+
+.location {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ===== TÍTULOS (visualmente ocultos, accesibles) ===== */
+.footer-section h3,
+.footer-section h4 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ===== LINKS ===== */
+.footer-section ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+  color: var(--accent);
+}
+
+/* ===== ICONOS SOCIALES ===== */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== EMAIL ===== */
+.email-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis; /* ← si el email es largo no desborda */
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+/* ===== FOOTER BOTTOM ===== */
+.footer-bottom {
+  max-width: 1200px;       /* ← alineado con footer-content */
+  margin: 0 auto;
+  border-top: none;
+  padding-top: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  box-sizing: border-box;
+}
+
+.footer-bottom p {
+  margin: 2px 0;
+}
+
+.experience-tag {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 10px 15px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .footer-section.brand {
+    align-items: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .email-text {
+    max-width: 100%;
+  }
+}
+
+.api-credit {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.api-credit a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.api-credit a:hover {
+  text-decoration: underline;
+}

@@ -17,6 +17,23 @@ Aplicación web desarrollada con **Angular 17+** que consume la [Dragon Ball API
 
 ---
 
+## 📸 Capturas
+
+### 🏠 Inicio
+![Inicio](public/screenshots/home.png)
+
+### 🐉 Personajes
+![Personajes](public/screenshots/characters.png)
+
+### 🪐 Planetas
+![Planetas](public/screenshots/planets.png)
+
+### 🌙 Modo oscuro / ☀️ Modo claro
+![Modo oscuro](public/screenshots/dark.png)
+![Modo claro](public/screenshots/light.png)
+
+---
+
 ## 🛠️ Tecnologías
 
 - [Angular 17+](https://angular.dev/) — framework principal

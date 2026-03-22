@@ -1,0 +1,41 @@
+<div class="home">
+  <div class="hero">
+    <img src="assets/dragonball.svg" alt="Dragon Ball" class="hero-logo" />
+    <h1>Dragon Ball App</h1>
+    <p class="subtitle">Explora el universo de Dragon Ball</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-icon">🐉</span>
+      <span class="stat-number">{{ totalCharacters() }}</span>
+      <span class="stat-label">Personajes</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">🪐</span>
+      <span class="stat-number">{{ totalPlanets() }}</span>
+      <span class="stat-label">Planetas</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-icon">⚡</span>
+      <span class="stat-number">58+</span>
+      <span class="stat-label">Transformaciones</span>
+    </div>
+  </div>
+
+  <div class="nav-cards">
+    <a routerLink="/characters" class="nav-card">
+      <span class="nav-icon">🐉</span>
+      <h2>Personajes</h2>
+      <p>Descubre los {{ totalCharacters() }} personajes del universo Dragon Ball con sus transformaciones y poderes</p>
+      <span class="nav-btn">Explorar →</span>
+    </a>
+
+    <a routerLink="/planets" class="nav-card">
+      <span class="nav-icon">🪐</span>
+      <h2>Planetas</h2>
+      <p>Conoce los {{ totalPlanets() }} planetas del universo, desde la Tierra hasta el Planeta Vegeta</p>
+      <span class="nav-btn">Explorar →</span>
+    </a>
+  </div>
+</div>

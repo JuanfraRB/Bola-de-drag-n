@@ -1,4 +1,4 @@
-<button class="hamburguer" (click)="toggle()">
+<button class="hamburger" (click)="toggle()">
   @if (isOpen()) {
     ✕
   } @else {
@@ -15,9 +15,15 @@
     <img src="./assets/dragonball.svg" alt="Dragon Ball" class="logo" />
     <h2>Dragon Ball</h2>
   </div>
+
   <ul>
     <li>
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="close()">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="close()">
+        🏠 Inicio
+      </a>
+    </li>
+    <li>
+      <a routerLink="/characters" routerLinkActive="active" (click)="close()">
         🐉 Personajes
       </a>
     </li>
@@ -27,3 +33,13 @@
       </a>
     </li>
   </ul>
+
+  <div class="theme-toggle">
+    <span>{{ isDark() ? '🌙' : '☀️' }}</span>
+    <label class="switch">
+      <input type="checkbox" [checked]="isDark()" (change)="toggleTheme()" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+</nav>

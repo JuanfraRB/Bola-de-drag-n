@@ -28,10 +28,6 @@ Aplicación web desarrollada con **Angular 17+** que consume la [Dragon Ball API
 ### 🪐 Planetas
 ![Planetas](public/screenshots/planets.png)
 
-### 🌙 Modo oscuro / ☀️ Modo claro
-![Modo oscuro](public/screenshots/dark.png)
-![Modo claro](public/screenshots/light.png)
-
 ---
 
 ## 🛠️ Tecnologías

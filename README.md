@@ -1,61 +1,102 @@
-# DragonBallApp
+# 🐉 Dragon Ball App
 
-## Gracias a https://web.dragonball-api.com/ por tener esta API gratuita para practicar. Muchas gracias.
+Aplicación web desarrollada con **Angular 17+** que consume la [Dragon Ball API](https://dragonball-api.com) creada por [Antonio Álvarez](https://antonioalvarez.dev/).
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+---
 
-## Development server
+## 📸 Características
 
-To start a local development server, run:
+- 🐉 **Personajes** — listado con filtros por nombre, género, raza y afiliación. Modal con transformaciones y planeta de origen.
+- 🪐 **Planetas** — listado con filtros por nombre y estado. Modal con descripción.
+- 🏠 **Página de inicio** — estadísticas del universo Dragon Ball.
+- 🌙 **Modo oscuro/claro** — toggle con memoria entre sesiones.
+- 💫 **Splash screen** — animación de las 7 bolas de dragón orbitando al arrancar.
+- 📱 **Responsive** — adaptado para móvil y escritorio.
+- ☰ **Sidebar hamburguesa** — navegación lateral con cierre automático.
+- ❌ **Página 404** personalizada.
+
+---
+
+## 🛠️ Tecnologías
+
+- [Angular 17+](https://angular.dev/) — framework principal
+- [TypeScript](https://www.typescriptlang.org/) — tipado estático
+- [RxJS](https://rxjs.dev/) — manejo de observables y debounce
+- [Dragon Ball API](https://dragonball-api.com) — fuente de datos
+
+---
+
+## 🚀 Instalación y uso
+
+### Requisitos previos
+
+- Node.js 18+
+- Angular CLI 17+
+
+### Pasos
 
 ```bash
+# Clonar el repositorio
+git clone https://github.com/JuanfraRB/dragon-ball-app.git
+
+# Entrar al directorio
+cd dragon-ball-app
+
+# Instalar dependencias
+npm install
+
+# Arrancar en modo desarrollo
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abre el navegador en `http://localhost:4200`
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📁 Estructura del proyecto
 
-```bash
-ng generate component component-name
+```
+src/
+└── app/
+    ├── pages/
+    │   
+    ├── models/
+    │   └── character.model.ts # Interfaces: Character, Planet, Transformation, ApiResponse
+    ├── pages/
+    |   ├── sidebar/          # Menú lateral hamburguesa
+    │   ├── home/             # Página de inicio con estadísticas
+    │   ├── characters/       # Listado y filtros de personajes
+    │   ├── planets/          # Listado y filtros de planetas
+    │   ├── footer/           # Footer con créditos
+    │   └── not-found/        # Página 404
+    └── services/
+        └── dragonball.ts     # Servicio HTTP con todos los endpoints
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🔗 Endpoints utilizados
 
-## Building
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/characters` | Listado paginado de personajes |
+| GET | `/characters/:id` | Detalle de un personaje con transformaciones |
+| GET | `/characters?name=&race=&gender=&affiliation=` | Filtros de personajes |
+| GET | `/planets` | Listado paginado de planetas |
+| GET | `/planets?name=&isDestroyed=` | Filtros de planetas |
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🙏 Agradecimientos
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Gracias a **[Antonio Álvarez](https://antonioalvarez.dev/)** por crear y mantener la Dragon Ball API de forma gratuita.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 👨‍💻 Autor
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Juan Francisco Rodríguez Berenguel**  
+Técnico Superior en DAM  
+📍 Almería, España  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juan-francisco-rodr%C3%ADguez-berenguel-356b931b1)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/JuanfraRB)

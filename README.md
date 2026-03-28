@@ -28,10 +28,6 @@ Aplicación web desarrollada con **Angular 17+** que consume la [Dragon Ball API
 ### 🪐 Planetas
 ![Planetas](public/screenshots/planets.png)
 
-### 🌙 Modo oscuro / ☀️ Modo claro
-![Modo oscuro](public/screenshots/dark.png)
-![Modo claro](public/screenshots/light.png)
-
 ---
 
 ## 🛠️ Tecnologías
@@ -39,7 +35,7 @@ Aplicación web desarrollada con **Angular 17+** que consume la [Dragon Ball API
 - [Angular 17+](https://angular.dev/) — framework principal
 - [TypeScript](https://www.typescriptlang.org/) — tipado estático
 - [RxJS](https://rxjs.dev/) — manejo de observables y debounce
-- [Dragon Ball API](https://dragonball-api.com) — fuente de datos
+- [Dragon Ball API](https://web.dragonball-api.com/) — fuente de datos
 
 ---
 
